@@ -24,7 +24,15 @@
     <p id="showData"></p>
     
     <br/><br/>
+    <input id="book-name" type="text" placeholder="Book Name" value=""/>
+    <select id="book-cat" name="Category">
+		<option value="Religy"> Religy </option>
+		<option value="Economy"> Economy </option>
+		<option value="Psychology"> Psychology </option>
+    </select>
+    <input id="book-price" type="number" placeholder="Price" value=""/>
     <input type="button" onclick="addData()" value="Tambah" />
+    <br/><br/>
     <table id="bookTable">
 		<tr>
 			<th>Book ID</th>
@@ -158,12 +166,15 @@
     
     
     function addData(){
-		idx = myBooks.length + 1;
+		idx 	= myBooks.length + 1;
+		var cat = document.getElementById('book-cat');
+		cat 	= cat.options[cat.selectedIndex].text; 
+		
 		var data = {
 			"Book ID": idx,
-			"Book Name": "Tazkiyatun Nafs " + idx,
-			"Category": "Religy",
-			"Price": "56.00"
+			"Book Name": document.getElementById('book-name').value,
+			"Category": cat,
+			"Price": document.getElementById('book-price').value
 		};
 		
 		myBooks.push(data);
@@ -174,7 +185,7 @@
 		newRow.insertCell(0).innerHTML = data['Book ID'];
 		newRow.insertCell(1).innerHTML = data['Book Name'];
 		newRow.insertCell(2).innerHTML = data['Category'];
-		newRow.insertCell(3).innerHTML = parseInt(data['Price']) * parseInt(data['Book ID']);
+		newRow.insertCell(3).innerHTML = parseInt(data['Price']);
 		newRow.insertCell(4).innerHTML = '<input type="button" onclick="delData(this, '+data['Book ID']+')" value="Hapus data '+data['Book ID']+'" />';
 		
 	}
