@@ -185,12 +185,7 @@
 		tableRef.deleteRow(xnode);
 		
 		for (var i = 0; i < myBooks.length; i++) {
-			
-			console.log(typeof(myBooks[i]['Book ID']))
-			console.log(typeof(index))
-			
         	if(myBooks[i]['Book ID'] == index){
-				console.log('hapis id ', index);
             	myBooks.splice(i, 1);
         		break;
             }
